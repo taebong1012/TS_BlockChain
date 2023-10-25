@@ -201,3 +201,23 @@ const push: Push = (config) => {
 > ```
 >
 > ?를 통해 마지막 추가 파라미터(c)는 추가 파라미터는 선택사항(옵션)임을 명시
+
+## Polymorphism
+
+타입스크립트가 배열의 값들을 보고 타입을 유추.
+
+> Generic Type을 선언함으로서 사용 가능</br>`<T>(arr: T[]): void` </br>**Concrete Type**: number, string, Null, unknown, ...</br>**Generic Type**: 타입의 Placeholder
+
+```tsx
+type SuperPrint = {
+  <TypePlaceholder>(arr: TypePlaceholder[]): void;
+};
+
+const superPrint: SuperPrint = (arr) => {
+  arr.forEach((i) => console.log(i));
+};
+
+superPrint([1, 2, 3, 4]);
+superPrint([true, false, true]);
+superPrint(["hi", 3, true, 6]);
+```
