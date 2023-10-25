@@ -249,3 +249,57 @@ function superPrint2<V>(a: V[]) {
 >   },
 > };
 > ```
+
+# #4 CLASSES AND INTERFACES
+
+## Classes
+
+### 접근 제한자
+
+|   구분    | 선언한 클래스 내 | 상속받은 클래스 내 | 인스턴스 |
+| :-------: | :--------------: | :----------------: | :------: |
+|  private  |        ✅        |         ❌         |    ❌    |
+| protected |        ✅        |         ⭕         |    ❌    |
+|  public   |        ✅        |         ✅         |    ✅    |
+
+```tsx
+class Player2 {
+  constructor(
+    private firstName: string,
+    private lastName: string,
+    public nickname: string
+  ) {}
+}
+
+const taehyun = new Player2("tae", "hi", "taebong");
+
+taehyun.firstName; // 불가능
+taehyun.nickname; // 가능
+```
+
+### 추상 클래스 (abstract class)
+
+추상클래스: 다른 클래스가 상속받을 수 있는 클래스
+
+1. 직접 새로운 인스턴스 생성은 불가
+2. 추상 클래스 안에 메소드를 직접 선언하지 않기. -> 추상 메소드 작성으로 대체
+
+```tsx
+abstract class User {
+  constructor(
+    protected firstName: string,
+    protected lastName: string,
+    protected nickname: string
+  ) {}
+  abstract getFullName(): void;
+}
+
+class Player3 extends User {
+  getFullName(): void {
+    console.log(`${this.firstName} ${this.lastName}`); // 가능
+  }
+}
+
+const tae1 = new Player3("tae", "hi", "taebong");
+tae1.firstName; // 불가능
+```
