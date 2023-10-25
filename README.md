@@ -336,3 +336,55 @@ class Dict {
   }
 }
 ```
+
+## Interfaces
+
+### 타입에 특정 값만 허용하기
+
+```tsx
+type Team = "red" | "blue" | "yellow";
+
+type Player4 = {
+  nickname: Nickname;
+  healthBar: HealthBar;
+  team: Team;
+};
+```
+
+### 인터페이스
+
+```tsx
+// 오브젝트의 모양을 특정해주기 위함
+interface Player4 {
+  nickname: Nickname;
+  healthBar: HealthBar;
+  team: Team;
+}
+```
+
+> `type`과 `interface` 비교</br>**공통점**: 객체의 모양을 결정</br>**차이점**: type 키워드는 interface에 비해 활용할 수 있는것이 많음. interface는 객체 모양을 타입스크립트에게 설명해주기 위한 단 한가지의 목적으로 이용.
+
+```tsx
+// 1. interface 사용
+interface User {
+  name: string;
+}
+
+interface Player extends User {}
+
+const nico: Player = {
+  name: "nico",
+};
+
+// 2. type 사용
+type User = {
+  name: string;
+};
+
+type Player = User & {};
+
+const nico: Player5 = {
+    name: "nico",;
+  };
+
+```
