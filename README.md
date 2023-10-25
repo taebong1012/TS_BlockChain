@@ -4,6 +4,8 @@
 
 > `TypeScript` ⇒ 오류 확인 ⇒ 컴파일 ⇒ `JavaScript`
 
+# #2 OVERVIEW OF TYPESCRIPT
+
 # Types
 
 ## Implicit Types vs Explicit Types
@@ -153,6 +155,8 @@ function hello(name: string | number) {
 }
 ```
 
+# #3 FUNCTIONS
+
 ## Call Signature
 
 함수 인자의 타입과 결과의 타입을 알려주는 도움말
@@ -221,3 +225,27 @@ superPrint([1, 2, 3, 4]);
 superPrint([true, false, true]);
 superPrint(["hi", 3, true, 6]);
 ```
+
+위의 코드(type타입)을 일반 함수로 대체 가능
+
+```tsx
+function superPrint2<V>(a: V[]) {
+  return a[0];
+}
+```
+
+> Generic Type을 다른 곳에 사용하는 경우</br>
+>
+> ```tsx
+> type Player<E> = {
+>   name: string;
+>   extraInfo: E;
+> };
+>
+> const tae: Player<{ favFood: string }> = {
+>   name: "tae",
+>   extraInfo: {
+>     favFood: "chicken",
+>   },
+> };
+> ```
