@@ -303,3 +303,36 @@ class Player3 extends User {
 const tae1 = new Player3("tae", "hi", "taebong");
 tae1.firstName; // 불가능
 ```
+
+## Recap
+
+### 객체의 property에 대해 모르지만 타입만 알 때
+
+```tsx
+type Words = {
+  //객체의 property에 대해 모르지만 타입만을 알 때 유용
+  [key: string]: string;
+};
+```
+
+### 타입으로 인스턴스 선언
+
+```tsx
+class Dict {
+  private words: Words;
+  constructor() {
+    this.words = {};
+  }
+
+  // word는 Word 클래스의 인스턴스 타입.
+  add(word: Word) {
+    if (this.words[word.term] === undefined) {
+      this.words[word.term] = word.def;
+    }
+  }
+
+  def(term: string) {
+    return this.words[term];
+  }
+}
+```
